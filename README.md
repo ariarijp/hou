@@ -2,7 +2,7 @@
 
 Send STDIN as a Slack message.
 
-Inspired by [Songumu/horenso](https://github.com/Songmu/horenso).
+Inspired by [Songmu/horenso](https://github.com/Songmu/horenso).
 
 ## Installation
 
