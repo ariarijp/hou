@@ -17,6 +17,7 @@ func createParams(filename string) slack.PostMessageParameters {
 	var params slack.PostMessageParameters
 	params.Username = "hou"
 	params.IconEmoji = ":bell:"
+	params.Parse = "full"
 
 	if filename == "" {
 		return params
