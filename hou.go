@@ -45,10 +45,11 @@ func handleError(err error, quiet bool) {
 }
 
 func main() {
-	var channel, filename string
+	var channel, filename, mention string
 	var asCode, quiet, silent bool
 	flag.StringVar(&channel, "channel", "", "Required: Which channel to send messages to")
 	flag.StringVar(&filename, "params-file", "", "Optional: Override slack.PostMessageParameters with JSON file")
+	flag.StringVar(&mention, "mention", "", "Optional: Add mention before message body")
 	flag.BoolVar(&asCode, "as-code", true, "Optional: Send message fenced by three backticks")
 	flag.BoolVar(&quiet, "quiet", true, "Optional: Suppress error message")
 	flag.BoolVar(&silent, "silent", false, "Optional: Suppress any output")
@@ -86,6 +87,10 @@ func main() {
 
 	if asCode {
 		text = fmt.Sprintf("```\n%s\n```", text)
+	}
+
+	if mention != "" {
+		text = fmt.Sprintf("%s\n%s", mention, text)
 	}
 
 	params := createParams(filename)
